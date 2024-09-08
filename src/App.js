@@ -13,11 +13,18 @@ function App() {
     updateTaskList([...taskList, taskFromInputField]);
   }
 
+  function deleteTask(index) {
+    let updatedList = taskList.filter((task, idx) => {
+      return idx !== index;
+    });
+    updateTaskList(updatedList);
+  }
+
   return (
     <div className="bg-gradient-to-r from-orange-500 via-red-500 to-amber-500 min-h-screen">
       <Header />
       <TaskInput task={task} taskStateUp={taskStateUp} />
-      <TaskList taskList={taskList} />
+      <TaskList taskList={taskList} deleteTask={deleteTask} />
     </div>
   );
 }

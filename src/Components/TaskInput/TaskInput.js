@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function TaskInput(props) {
   const [taskInput, setTaskInput] = useState();
+  const inputRef = useRef();
 
   function taskInputHandler(e) {
     setTaskInput(e.target.value);
@@ -11,13 +12,16 @@ function TaskInput(props) {
     e.preventDefault();
     if (taskInput) {
       setTaskInput("");
+      inputRef.current.value = "";
+      inputRef.current.focus();
+      props.taskStateUp(taskInput);
     }
-    props.taskStateUp(taskInput);
   }
 
   return (
     <form onSubmit={onSubmitHandler} className="flex justify-center items-center py-10 gap-4">
       <input
+        ref={inputRef}
         type="text"
         onChange={taskInputHandler}
         value={props.taskInput}

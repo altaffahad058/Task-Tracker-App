@@ -24,7 +24,7 @@ function TaskInput(props) {
         ref={inputRef}
         type="text"
         onChange={taskInputHandler}
-        value={props.taskInput}
+        value={taskInput}
         className="px-5 py-3 shadow-xl shadow-slate-500 bg-white border w-2/5"
         placeholder="Enter you task..."
       />
